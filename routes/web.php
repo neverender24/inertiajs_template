@@ -21,8 +21,10 @@ Route::middleware('auth')->group(function() {
         Route::get('/{id}/edit', [UserController::class, 'edit']);
         Route::delete('/{id}', [UserController::class, 'destroy']);
         Route::patch('/{id}', [UserController::class, 'update']);
+        Route::get('/change-password', [UserController::class, 'changePassword']);
+        Route::post('/update-password', [UserController::class, 'updatePassword']);
+        Route::get('/settings', [UserController::class, 'settings']);
     });
-
 
     //sample only you can delete
     Route::get('/posts', function () {
@@ -30,7 +32,5 @@ Route::middleware('auth')->group(function() {
             "test" => auth()->user()->email
         ]);
     });
-
-    Route::resource('test', UserController::class);
 
 });

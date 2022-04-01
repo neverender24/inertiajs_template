@@ -293,8 +293,8 @@
                     >
                     <ul class="dropdown-menu fsz-sm">
                         <li>
-                            <a
-                                href=""
+                            <Link
+                                href="/users/settings"
                                 class="
                                     d-b
                                     td-n
@@ -305,12 +305,12 @@
                                 ><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-sliders2 mR-10" viewBox="0 0 16 16">
                                   <path fill-rule="evenodd" d="M10.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4H1.5a.5.5 0 0 1 0-1H10V1.5a.5.5 0 0 1 .5-.5ZM12 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-6.5 2A.5.5 0 0 1 6 6v1.5h8.5a.5.5 0 0 1 0 1H6V10a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5ZM1 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 1 8Zm9.5 2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V13H1.5a.5.5 0 0 1 0-1H10v-1.5a.5.5 0 0 1 .5-.5Zm1.5 2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z"/>
                                 </svg> 
-                                <span> Setting</span></a
+                                <span> Setting</span></Link
                             >
                         </li>
                         <li>
-                            <a
-                                href=""
+                            <Link
+                                href="/users/change-password"
                                 class="
                                     d-b
                                     td-n
@@ -322,12 +322,13 @@
                                   <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
                                   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                                 </svg> 
-                                <span> Profile</span></a
+                                <span> Change Password</span></Link
                             >
                         </li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <a
+                                @click="logout()"
                                 href=""
                                 class="
                                     d-b
@@ -353,6 +354,11 @@
 <script>
 
 export default {
-
+    methods: {
+        logout() {
+            this.$inertia.post('/logout')
+            location.href = '/'
+        }
+    }
 }
 </script>

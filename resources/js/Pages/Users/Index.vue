@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Pagination from "../../Shared/Pagination";
+import Pagination from "@/Shared/Pagination";
 
 export default {
     components: { Pagination },

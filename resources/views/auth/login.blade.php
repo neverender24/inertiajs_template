@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Sign In</title>
 
-    <link href="/css/colorlib.css" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <script defer="defer" src="/js/app.js"></script>
 </head>
 

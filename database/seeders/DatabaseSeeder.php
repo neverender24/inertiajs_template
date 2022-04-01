@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\FirstUserSeed;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(100)->create();
+
+        $this->call([
+            FirstUserSeed::class,
+        ]);
     }
 }

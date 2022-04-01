@@ -17,9 +17,9 @@
     </div>
 </template>
 <script>
-import Nav from "../Shared/Nav";
-import Footer from "../Shared/Footer";
-import Sidebar from "../Shared/Sidebar.vue";
+import Nav from "@/Shared/Nav";
+import Footer from "@/Shared/Footer";
+import Sidebar from "@/Shared/Sidebar.vue";
 
 export default {
     components: {
