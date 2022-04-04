@@ -12,7 +12,7 @@
                 </div>
                 <div class="peer">
                     <Link class="btn btn-primary btn-sm" href="/users/create">Add User</Link>
-                    <button class="btn btn-primary btn-sm mL-2" @click="showFilter()">Filter</button>
+                    <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
             </div>
         </div>
