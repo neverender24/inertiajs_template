@@ -2,7 +2,7 @@
     <Head>
         <title>Users</title>
     </Head>
-        
+
     <div class="row gap-10 masonry pos-r">
         <div class="peers fxw-nw jc-sb ai-c">
             <h3>Users</h3>
@@ -55,7 +55,7 @@ export default {
     data() {
         return {
             search: this.$props.filters.search,
-            modal: false,
+            confirm: false,
         };
     },
     watch: {
@@ -72,8 +72,12 @@ export default {
     },
     methods: {
         deleteUser(id) {
-            this.$inertia.delete("/users/" + id);
+            let text = "WARNING!\nAre you sure you want to delete the record?";
+              if (confirm(text) == true) {
+                this.$inertia.delete("/users/" + id);
+              }
         }
     },
 };
 </script>
+
