@@ -12,41 +12,51 @@
                 </div>
                 <div class="peer">
                     <Link class="btn btn-primary btn-sm" href="/users/create">Add User</Link>
+                    <button class="btn btn-primary btn-sm mL-2" @click="showFilter()">Filter</button>
                 </div>
             </div>
         </div>
-        <div class="bgc-white p-20 bd">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(user, index) in users.data" :key="index">
-                        <td>{{ user.name }}</td>
-                        <td>
-                            <div class="dropdown dropstart" v-if="user.can.edit">
-                              <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                                  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                                </svg>
-                              </button>
-                              <ul class="dropdown-menu action-dropdown" aria-labelledby="dropdownMenuButton1">
-                                <li><Link class="dropdown-item" :href="`/users/${user.id}/edit`">Edit</Link></li>
-                                <li><hr class="dropdown-divider action-divider"></li>
-                                <li><Link class="text-danger dropdown-item" @click="deleteUser(user.id)">Delete</Link></li>
-                              </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="row justify-content-center">
-                <div class="col-md-12">
-                    <pagination :links="users.links" />
+        <div :class="{'col-9': filter}">
+            <div class="bgc-white p-20 bd">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col" style="text-align: right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(user, index) in users.data" :key="index">
+                            <td>{{ user.name }}</td>
+                            <td style="text-align: right">
+                                <div class="dropdown dropstart" v-if="user.can.edit">
+                                  <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                                    </svg>
+                                  </button>
+                                  <ul class="dropdown-menu action-dropdown" aria-labelledby="dropdownMenuButton1">
+                                    <li><Link class="dropdown-item" :href="`/users/${user.id}/edit`">Edit</Link></li>
+                                    <li><hr class="dropdown-divider action-divider"></li>
+                                    <li><Link class="text-danger dropdown-item" @click="deleteUser(user.id)">Delete</Link></li>
+                                  </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <pagination :links="users.links" />
+                    </div>
                 </div>
+            </div>
+        </div>
+        
+         <div class="col-3">
+            <div class="bgc-white p-20 bd">
+                Advanced Filter
             </div>
         </div>
     </div>
@@ -66,6 +76,7 @@ export default {
         return {
             search: this.$props.filters.search,
             confirm: false,
+            filter: false
         };
     },
     watch: {
@@ -86,6 +97,9 @@ export default {
               if (confirm(text) == true) {
                 this.$inertia.delete("/users/" + id);
               }
+        },
+        showFilter() {
+            this.filter = !this.filter
         }
     },
 };
