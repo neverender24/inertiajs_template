@@ -81470,3 +81470,33 @@ table.dataTable.no-footer {
 .main-content {
   padding: 75px 20px 20px !important;
 }
+
+.dropdown-menu-c {
+  width: 175% !important;
+}
+
+.action-btn {
+  color: #020202 !important;
+  border: unset !important;
+  background-color: unset !important;
+  border-radius: 50% !important;
+  padding: 0.1rem 0.5rem !important;
+}
+
+.action-btn:hover {
+  background-color: #dce4eb !important;
+}
+
+.action-btn:focus {
+  background-color: #dce4eb !important;
+  box-shadow: unset !important;
+}
+
+.action-dropdown {
+  padding: 0.1rem 0 !important;
+  min-width: 8rem;
+}
+
+.action-divider {
+  margin: 0.1rem 0 !important;
+}

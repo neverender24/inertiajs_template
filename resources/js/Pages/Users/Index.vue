@@ -48,13 +48,15 @@
 
                 <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <pagination :links="users.links" />
+                        <!-- read the explanation in the Paginate.vue component -->
+                        <!-- <pagination :links="users.links" /> -->
+                        <pagination :next="users.next_page_url" :prev="users.prev_page_url" />
                     </div>
                 </div>
             </div>
         </div>
         
-         <div class="col-3">
+         <div class="col-3" v-if="filter">
             <div class="bgc-white p-20 bd">
                 Advanced Filter
             </div>
