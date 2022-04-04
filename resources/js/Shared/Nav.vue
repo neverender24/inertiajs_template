@@ -291,7 +291,7 @@
                             >
                         </div></a
                     >
-                    <ul class="dropdown-menu fsz-sm">
+                    <ul class="dropdown-menu fsz-sm dropdown-menu-c">
                         <li>
                             <Link
                                 href="/users/settings"
