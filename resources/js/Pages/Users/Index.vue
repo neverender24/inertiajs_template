@@ -16,7 +16,14 @@
                 </div>
             </div>
         </div>
-        <div :class="{'col-9': filter}">
+
+        <filtering v-if="filter" @closeFilter="filter=false">
+            <label>Sample Inputs</label>
+            <input type="text" class="form-control">
+            <button class="btn btn-sm btn-primary mT-5 text-white" @click="">Filter</button>
+        </filtering>
+
+        <div class="col-12">
             <div class="bgc-white p-20 bd">
                 <table class="table table-hover">
                     <thead>
@@ -56,19 +63,15 @@
             </div>
         </div>
         
-         <div class="col-3" v-if="filter">
-            <div class="bgc-white p-20 bd">
-                Advanced Filter
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
+import Filtering from "@/Shared/Filter";
 import Pagination from "@/Shared/Pagination";
 
 export default {
-    components: { Pagination },
+    components: { Pagination, Filtering },
     props: {
         users: Object,
         filters: Object,
@@ -106,4 +109,3 @@ export default {
     },
 };
 </script>
-
