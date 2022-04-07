@@ -180,10 +180,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "avatar",
     ref: "pond",
     "label-idle": "Click or drop your photo here...",
-    onProcessfilestart: _cache[0] || (_cache[0] = function ($event) {
+    onRemovefile: _cache[0] || (_cache[0] = function ($event) {
       return $data.processing = false;
     }),
-    onAddfile: _cache[1] || (_cache[1] = function ($event) {
+    onProcessfilestart: _cache[1] || (_cache[1] = function ($event) {
+      return $data.processing = false;
+    }),
+    onAddfile: _cache[2] || (_cache[2] = function ($event) {
       return $data.processing = true;
     }),
     maxFileSize: "1MB",
@@ -221,7 +224,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     key: 0,
     "class": "btn-sm btn-secondary",
     disabled: $data.processing,
-    onClick: _cache[2] || (_cache[2] = function () {
+    onClick: _cache[3] || (_cache[3] = function () {
       return $options.changePhoto && $options.changePhoto.apply($options, arguments);
     })
   }, "Save", 8
@@ -229,13 +232,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_14)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     "class": "btn-sm btn-secondary",
-    onClick: _cache[3] || (_cache[3] = function ($event) {
+    onClick: _cache[4] || (_cache[4] = function ($event) {
       return $data.isChangePhoto = !$data.isChangePhoto;
     })
   }, "Change"))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, $data.isChangeName ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-control",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $data.form.name = $event;
     })
   }, null, 512
@@ -245,7 +248,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [$data.isChangeName ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
     "class": "btn-sm btn-secondary",
-    onClick: _cache[5] || (_cache[5] = function () {
+    onClick: _cache[6] || (_cache[6] = function () {
       return $options.changeName && $options.changeName.apply($options, arguments);
     }),
     disabled: $data.form.processing
@@ -254,7 +257,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , _hoisted_22)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     "class": "btn-sm btn-secondary",
-    onClick: _cache[6] || (_cache[6] = function ($event) {
+    onClick: _cache[7] || (_cache[7] = function ($event) {
       return $data.isChangeName = !$data.isChangeName;
     })
   }, "Change"))])])])])])]);

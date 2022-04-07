@@ -24,6 +24,7 @@
                                         id="avatar"
                                         ref="pond"
                                         label-idle="Click or drop your photo here..."
+                                        @removefile="processing = false"
                                         @processfilestart="processing = false"
                                         @addfile="processing = true"
                                         maxFileSize="1MB"
