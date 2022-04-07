@@ -130,10 +130,6 @@ export default {
                 }
             });
         },
-
-        processFile() {
-            alert('a')
-        }
     }
 }
 
