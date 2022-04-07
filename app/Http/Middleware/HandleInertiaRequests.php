@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -39,7 +40,8 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => auth()->user() ? [ //if there is a user
                 'user' => [
-                    'username' => ucfirst(auth()->user()->name)
+                    'username' => ucfirst(auth()->user()->name),
+                    'photo' => User::where('id', auth()->user()->id)->first()->getFirstMedia('avatars')->getUrl()
                 ]
             ] : null,
             'flash' => [

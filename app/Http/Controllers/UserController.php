@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -116,5 +117,30 @@ class UserController extends Controller
     public function settings()
     {
         return inertia('Users/Settings');
+    }
+
+    public function changeName(Request $request) {
+        $data = $this->model->findOrFail(auth()->user()->id);
+        $data->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect('/users/settings')->with('message', 'User updated');
+    }
+
+    public function changePhoto(Request $request) {
+        $data = $this->model->findOrFail(auth()->user()->id);
+
+        $temporaryFile = TemporaryFile::where('folder', $request->folder)->first();
+
+        if ($temporaryFile) {
+            $data->addMedia(storage_path('app/avatars/tmp/' . $request->folder . '/' . $temporaryFile->filename))
+                 ->toMediaCollection('avatars');
+
+            rmdir(storage_path('app/avatars/tmp/' . $request->folder));
+            $temporaryFile->delete();
+        }
+
+        return redirect('/users/settings')->with('message', 'User updated');
     }
 }

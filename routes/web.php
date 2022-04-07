@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileHandleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -13,7 +14,6 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
     Route::prefix('/users')->group(function() {
         Route::get('/', [UserController::class, 'index']);
         Route::post('/', [UserController::class, 'store']);
@@ -24,13 +24,11 @@ Route::middleware('auth')->group(function() {
         Route::get('/change-password', [UserController::class, 'changePassword']);
         Route::post('/update-password', [UserController::class, 'updatePassword']);
         Route::get('/settings', [UserController::class, 'settings']);
+        Route::post('/change-name', [UserController::class, 'changeName']);
+        Route::post('/change-photo', [UserController::class, 'changePhoto']);
     });
 
-    //sample only you can delete
-    Route::get('/posts', function () {
-        return inertia('Posts/Index', [
-            "test" => auth()->user()->email
-        ]);
-    });
-
+    //Avatar file upload
+    Route::post('/files/upload', [FileHandleController::class, 'uploadAvatar']);
+    Route::delete('/files/upload/delete', [FileHandleController::class, 'destroyAvatar']);
 });

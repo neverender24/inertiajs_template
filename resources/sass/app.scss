@@ -2,7 +2,10 @@
 @import 'variables';
 
 @import 'theme.css';
-
+ 
+@import "~filepond/dist/filepond.min.css";
+@import "~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
+@import '~filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css';
 // Bootstrap
 //@import '~bootstrap/scss/bootstrap';
 
@@ -11,7 +14,7 @@
 }
 
 .dropdown-menu-c {
-    width: 175% !important;
+    width: 200px !important;
 }
 
 .action-btn {
@@ -37,5 +40,9 @@
 
 .action-divider {
     margin: 0.1rem 0 !important;
+}
+
+.filepond--wrapper {
+    width: 15rem !important;
 }
 

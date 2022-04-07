@@ -281,7 +281,7 @@
                         ><div class="peer mR-10">
                             <img
                                 class="w-2r bdrs-50p"
-                                src="https://randomuser.me/api/portraits/men/10.jpg"
+                                :src="$page.props.auth.user.photo"
                                 alt=""
                             />
                         </div>
@@ -289,8 +289,11 @@
                             <span class="fsz-sm c-grey-900"
                                 >{{ $page.props.auth.user.username }}</span
                             >
-                        </div></a
-                    >
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-caret-down-fill mL-5" viewBox="0 0 16 16">
+                          <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                        </svg>
+                    </a>
                     <ul class="dropdown-menu fsz-sm dropdown-menu-c">
                         <li>
                             <Link

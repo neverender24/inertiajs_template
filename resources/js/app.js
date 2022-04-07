@@ -7,12 +7,27 @@ import Notification  from "./Shared/Notification"
 import { InertiaProgress } from '@inertiajs/progress'
 
 
+// FileUpload
+import vueFilePond from "vue-filepond";
+import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
+import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
+ 
+const FilePond = vueFilePond(
+    FilePondPluginFileValidateType,
+    FilePondPluginImagePreview,
+    FilePondPluginFileValidateSize,
+    FilePondPluginImageCrop,
+    FilePondPluginImageTransform
+);
+
 createInertiaApp({
   resolve: async name => {
     let page = (await import(`./Pages/${name}`)).default;
     
     page.layout ??= Layout
-
 
     return page;
   },
@@ -22,6 +37,7 @@ createInertiaApp({
       .component("Link", Link)
       .component("Head", Head)
       .component("Notification", Notification)
+      .component("FilePond", FilePond)
       .mount(el)
   },
 
@@ -29,16 +45,8 @@ createInertiaApp({
 })
 
 InertiaProgress.init({
-    // The delay after which the progress bar will
-    // appear during navigation, in milliseconds.
     delay: 250,
-
-    // The color of the progress bar.
     color: '#29d',
-
-    // Whether to include the default NProgress styles.
     includeCSS: true,
-
-    // Whether the NProgress spinner will be shown.
     showSpinner: false,
 })
