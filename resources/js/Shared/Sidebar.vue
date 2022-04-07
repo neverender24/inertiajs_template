@@ -12,6 +12,7 @@
                                         <img
                                             src="/images/logo.png"
                                             alt=""
+                                            class="img-fluid p-5"
                                         />
                                     </div>
                                 </div>
