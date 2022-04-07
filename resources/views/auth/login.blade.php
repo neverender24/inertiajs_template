@@ -4,42 +4,51 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <title>Sign In</title>
+    <title>Sign In - Your System Name</title>
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
-    <script defer="defer" src="/js/app.js"></script>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
 </head>
 
 <body class="app">
     <div id="loader">
         <div class="spinner"></div>
     </div>
-    <script>
-        window.addEventListener("load", (function () {
-            const t = document.getElementById("loader");
-            setTimeout((function () {
-                t.classList.add("fadeOut")
-            }), 300)
-        }))
-
-    </script>
+{{$errors}}
     <div class="peers ai-s fxw-nw h-100vh">
         <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv"
             style='background-image:url("images/bg.jpg")'>
             <div class="pos-a centerXY">
-                <div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px"><img class="pos-a centerXY"
-                        src="images/logo.png" alt=""></div>
+                <div class="row text-center">
+                    <div>
+                        <img class="mw-50" src="images/logo.png" alt="">
+                    </div>
+                </div>
+                <div class="row" style="color:white">
+                    <h3>YOUR INFORMATION SYSTEM NAME</h3>
+                </div>
             </div>
         </div>
         <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r" style="min-width:320px">
+            <div class="row text-center" id="mobile-logo">
+                <div class="col-offset-5 mb-1">
+                    <img class="img-fluid" src="images/logo.png" alt="">
+                    <h3>YOUR INFORMATION SYSTEM NAME</h3>
+                </div>
+            </div>
             <h4 class="fw-300 c-grey-900 mB-40">Login</h4>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <div class="mb-3"><label class="text-normal text-dark form-label">Username</label> 
-                    <input type="email" name="email" class="form-control" placeholder="John Doe"></div>
-                <div class="mb-3"><label class="text-normal text-dark form-label">Password</label> 
-                    <input
-                        type="password" class="form-control" name="password" placeholder="Password"></div>
+                 @if ($errors)
+                 <small class="text-danger"><strong>{{ $errors->first('email') }}</strong></small>
+                 @endif
+                <div class="mb-3">
+                    <label class="text-normal text-dark form-label">Username</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="text-normal text-dark form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
                 <div class="">
                     <div class="peers ai-c jc-sb fxw-nw">
                         <div class="peer">
@@ -56,4 +65,20 @@
     </div>
 </body>
 
+<script>
+    window.addEventListener("load", (function () {
+        const t = document.getElementById("loader");
+        setTimeout((function () {
+            t.classList.add("fadeOut")
+        }), 300)
+    }))
+
+    var x = document.getElementById("mobile-logo");
+
+    if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+</script>
 </html>
