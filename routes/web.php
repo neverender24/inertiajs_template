@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 
 Auth::routes();
 
+
 Route::middleware('auth')->group(function() {
     Route::get('/', function () {
         return inertia('Home');
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function() {
         Route::post('/change-name', [UserController::class, 'changeName']);
         Route::post('/change-photo', [UserController::class, 'changePhoto']);
     });
+
 
     //Avatar file upload
     Route::post('/files/upload', [FileHandleController::class, 'uploadAvatar']);
