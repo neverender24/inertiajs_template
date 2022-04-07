@@ -24,7 +24,8 @@
                                         id="avatar"
                                         ref="pond"
                                         label-idle="Click or drop your photo here..."
-                                        @addfile="onProcessFile"
+                                        @processfilestart="processing = false"
+                                        @addfile="processing = true"
                                         maxFileSize="1MB"
                                         allowImageTransform="true"
                                         allowImageCrop="true"
@@ -56,7 +57,7 @@
                             </div>
                         </div>
                         <div class="col text-end">
-                            <button class="btn-sm btn-secondary"  v-if="isChangePhoto" @click="changePhoto">Save</button>
+                            <button class="btn-sm btn-secondary" :disabled="processing"  v-if="isChangePhoto" @click="changePhoto">Save</button>
                             <button class="btn-sm btn-secondary" v-else @click="isChangePhoto= !isChangePhoto">Change</button>
                         </div>
                     </div>
@@ -75,7 +76,7 @@
                             <div class="item-data" v-else>{{ $page.props.auth.user.username }}</div>
                         </div>
                         <div class="col text-end">
-                            <button class="btn-sm btn-secondary"  v-if="isChangeName" @click="changeName">Save</button>
+                            <button class="btn-sm btn-secondary"  v-if="isChangeName" @click="changeName" :disabled="form.processing">Save</button>
                             <button class="btn-sm btn-secondary" v-else @click="isChangeName= !isChangeName">Change</button>
                         </div>
                     </div>
@@ -100,6 +101,7 @@ export default {
             form: useForm({
                 name: this.$page.props.auth.user.username,
             }),
+            processing: false
         };
     },
     methods: {
@@ -127,6 +129,10 @@ export default {
                     vm.isChangePhoto = !vm.isChangePhoto
                 }
             });
+        },
+
+        processFile() {
+            alert('a')
         }
     }
 }
