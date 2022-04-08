@@ -92,6 +92,7 @@ export default {
                 {
                     preserveState: true,
                     replace: true,
+                    preserveScroll: true,
                 }
             );
         }, 300),

@@ -38,7 +38,8 @@ __webpack_require__.r(__webpack_exports__);
         search: value
       }, {
         preserveState: true,
-        replace: true
+        replace: true,
+        preserveScroll: true
       });
     }, 300)
   },
