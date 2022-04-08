@@ -90,9 +90,9 @@ export default {
                 "/users",
                 { search: value },
                 {
+                    preserveScroll: true,
                     preserveState: true,
                     replace: true,
-                    preserveScroll: true,
                 }
             );
         }, 300),
