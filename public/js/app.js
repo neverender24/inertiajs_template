@@ -627,7 +627,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
- // FileUpload
+ //PLEASE COMMENT THE PLUGINS THAT YOU WON'T BE USING
+// FileUpload
 
 
 
@@ -635,7 +636,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_6___default()((filepond_plugin_file_validate_type__WEBPACK_IMPORTED_MODULE_7___default()), (filepond_plugin_image_preview__WEBPACK_IMPORTED_MODULE_8___default()), (filepond_plugin_file_validate_size__WEBPACK_IMPORTED_MODULE_9___default()), (filepond_plugin_image_crop__WEBPACK_IMPORTED_MODULE_10___default()), (filepond_plugin_image_transform__WEBPACK_IMPORTED_MODULE_11___default()));
+var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_6___default()((filepond_plugin_file_validate_type__WEBPACK_IMPORTED_MODULE_7___default()), (filepond_plugin_image_preview__WEBPACK_IMPORTED_MODULE_8___default()), (filepond_plugin_file_validate_size__WEBPACK_IMPORTED_MODULE_9___default()), (filepond_plugin_image_crop__WEBPACK_IMPORTED_MODULE_10___default()), (filepond_plugin_image_transform__WEBPACK_IMPORTED_MODULE_11___default())); // end FileUpload
+
 (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.createInertiaApp)({
   resolve: function () {
     var _resolve = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(name) {

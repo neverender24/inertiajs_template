@@ -6,6 +6,7 @@ import Layout  from "./Shared/Layout"
 import Notification  from "./Shared/Notification"
 import { InertiaProgress } from '@inertiajs/progress'
 
+//PLEASE COMMENT THE PLUGINS THAT YOU WON'T BE USING
 
 // FileUpload
 import vueFilePond from "vue-filepond";
@@ -14,7 +15,7 @@ import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
- 
+
 const FilePond = vueFilePond(
     FilePondPluginFileValidateType,
     FilePondPluginImagePreview,
@@ -22,6 +23,8 @@ const FilePond = vueFilePond(
     FilePondPluginImageCrop,
     FilePondPluginImageTransform
 );
+// end FileUpload
+
 
 createInertiaApp({
   resolve: async name => {
