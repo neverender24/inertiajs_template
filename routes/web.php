@@ -4,6 +4,8 @@ use App\Http\Controllers\FileHandleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MunicipalController;
+use App\Http\Controllers\BarangayController;
 
 Auth::routes();
 
@@ -28,9 +30,21 @@ Route::middleware('auth')->group(function() {
         Route::post('/change-name', [UserController::class, 'changeName']);
         Route::post('/change-photo', [UserController::class, 'changePhoto']);
     });
-
-
+    
+    
     //Avatar file upload
     Route::post('/files/upload', [FileHandleController::class, 'uploadAvatar']);
     Route::delete('/files/upload/delete', [FileHandleController::class, 'destroyAvatar']);
+    
+    
+    //Municipalities
+    Route::prefix('municipals')->group(function() {
+        Route::post('/',[MunicipalController::class, 'index']);
+    });
+
+    //Barangays
+    Route::prefix('barangays')->group(function() {
+        Route::post('/',[BarangayController::class, 'index']);
+    });
+    
 });

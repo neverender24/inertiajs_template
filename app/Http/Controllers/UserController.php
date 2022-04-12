@@ -62,7 +62,7 @@ class UserController extends Controller
     {
 
         $data = $this->model->where('id', $id)->first([
-            'name', 'id', 'email',
+            'name', 'id', 'email', 'municipal_id', 'barangay_id'
         ]);
 
         return inertia('Users/Create', [
@@ -75,6 +75,8 @@ class UserController extends Controller
         $data = $this->model->findOrFail($request->id);
         $data->update([
             'name' => $request->name,
+            'municipal_id' => $request->municipal_id,
+            'barangay_id' => $request->barangay_id
         ]);
 
         return redirect('/users')->with('message', 'User updated');
