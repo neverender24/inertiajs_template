@@ -25,6 +25,7 @@
             <Select
                 v-model="form.barangay_id" 
                 :collection="barangays"
+                :barangays="form.municipal_id"
             />
             <div class="fs-6 c-red-500" v-if="form.errors.municipality">{{ form.errors.municipality }}</div>
             <label for="">Email</label>
@@ -59,6 +60,7 @@ export default {
             }),
             municipals:[],
             barangays:[],
+            testValue:"",
             pageTitle: ""
         };
     },
@@ -77,11 +79,6 @@ export default {
 
         this.loadMunicipals()
     },
-    watch:{
-        'form.municipal_id': function(value) {
-            this.loadBarangays(value)
-        }
-    },
 
     methods: {
         submit() {
@@ -99,12 +96,6 @@ export default {
                 this.municipals = response.data
             })
         },
-
-        loadBarangays(municipal_id) {
-            axios.post('/barangays',{municipal_id:municipal_id}).then((response) => {
-                this.barangays = response.data
-            })
-        }
 
     },
 };
