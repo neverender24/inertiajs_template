@@ -23,12 +23,15 @@ __webpack_require__.r(__webpack_exports__);
         name: "",
         municipal_id: "",
         barangay_id: "",
+        purok_id: "",
         email: "",
         password: "",
         id: null
       }),
       municipals: [],
       barangays: [],
+      puroks: [],
+      testValue: "",
       pageTitle: ""
     };
   },
@@ -46,11 +49,6 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loadMunicipals();
   },
-  watch: {
-    'form.municipal_id': function formMunicipal_id(value) {
-      this.loadBarangays(value);
-    }
-  },
   methods: {
     submit: function submit() {
       if (this.editData !== undefined) {
@@ -66,14 +64,26 @@ __webpack_require__.r(__webpack_exports__);
         _this.municipals = response.data;
       });
     },
-    loadBarangays: function loadBarangays(municipal_id) {
+    loadBarangays: function loadBarangays() {
       var _this2 = this;
 
       axios.post('/barangays', {
-        municipal_id: municipal_id
+        municipal_id: this.form.municipal_id
       }).then(function (response) {
         _this2.barangays = response.data;
       });
+    },
+    loadPurok: function loadPurok() {
+      this.puroks = [{
+        value: "1",
+        name: "test1"
+      }, {
+        value: "2",
+        name: "test2"
+      }, {
+        value: "3",
+        name: "test3"
+      }];
     }
   }
 });
@@ -155,17 +165,28 @@ var _hoisted_10 = {
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
+}, "Purok", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  key: 3,
+  "class": "fs-6 c-red-500"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": ""
 }, "Email", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": ""
 }, "Password", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = ["disabled"];
+var _hoisted_15 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
@@ -183,7 +204,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.submit();
     }, ["prevent"]))
   }, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -202,33 +223,48 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.form.municipal_id = $event;
     }),
-    collection: $data.municipals
+    options: $data.municipals,
+    form: $data.form
   }, null, 8
   /* PROPS */
-  , ["modelValue", "collection"]), $data.form.errors.municipality ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.municipality), 1
+  , ["modelValue", "options", "form"]), $data.form.errors.municipal_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.municipal_id), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
     modelValue: $data.form.barangay_id,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.form.barangay_id = $event;
     }),
-    collection: $data.barangays
+    options: $data.barangays,
+    form: $data.form,
+    onCallMethod: $options.loadBarangays
   }, null, 8
   /* PROPS */
-  , ["modelValue", "collection"]), $data.form.errors.municipality ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.municipality), 1
+  , ["modelValue", "options", "form", "onCallMethod"]), $data.form.errors.barangay_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.barangay_id), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
+    modelValue: $data.form.purok_id,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.form.purok_id = $event;
+    }),
+    options: $data.puroks,
+    form: $data.form,
+    onCallMethod: $options.loadPurok
+  }, null, 8
+  /* PROPS */
+  , ["modelValue", "options", "form", "onCallMethod"]), $data.form.errors.purok_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.purok_id), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.form.email = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]]), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $data.form.password = $event;
     }),
     "class": "form-control",
@@ -237,7 +273,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "hidden",
-    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
       return $data.form.id = $event;
     }),
     "class": "form-control",
@@ -247,13 +283,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-primary mt-3",
-    onClick: _cache[6] || (_cache[6] = function ($event) {
+    onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.submit();
     }),
     disabled: $data.form.processing
   }, "Save changes", 8
   /* PROPS */
-  , _hoisted_13)], 32
+  , _hoisted_15)], 32
   /* HYDRATE_EVENTS */
   )])]);
 }

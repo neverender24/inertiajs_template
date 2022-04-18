@@ -103,7 +103,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    collection: Array
+    form: Object
+    /**
+     * List of dynamic props to watch that will trigger
+     * the api call (axios response)
+     */
+    // barangas:{
+    //     type: String,
+    //     default: ''
+    // },
+    // purok:{
+    //     type: String,
+    //     default: ''
+    // },
+
+  },
+  watch: {
+    form: {
+      handler: function handler(value) {
+        this.$emit('callMethod');
+        console.log(value.barangay_id);
+      },
+      deep: true
+    }
   }
 });
 
@@ -482,7 +504,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_select, {
-    options: $props.collection,
     reduce: function reduce(collection) {
       return collection.value;
     },
@@ -490,7 +511,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     label: "name"
   }, null, 8
   /* PROPS */
-  , ["options", "reduce"]);
+  , ["reduce"]);
 }
 
 /***/ }),

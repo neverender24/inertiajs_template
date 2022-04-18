@@ -22,7 +22,7 @@
             <input type="text" class="form-control">
             <button class="btn btn-sm btn-primary mT-5 text-white" @click="">Filter</button>
         </filtering>
-
+ 
         <div class="col-12">
             <div class="bgc-white p-20 bd">
                 <table class="table table-hover">
