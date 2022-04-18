@@ -19,7 +19,8 @@
             <label for="">Municipality</label>
             <Select
                 v-model="form.municipal_id" 
-                :options="municipals"
+                :collection="municipals"
+                label="name"
                 :form="form"
             />
             <div class="fs-6 c-red-500" v-if="form.errors.municipal_id">{{ form.errors.municipal_id }}</div>
@@ -27,7 +28,7 @@
             <label for="">Barangay</label>
             <Select
                 v-model="form.barangay_id" 
-                :options="barangays"
+                :collection="barangays"
                 :form="form"
                 @callMethod="loadBarangays"
             />
@@ -36,7 +37,7 @@
             <label for="">Purok</label>
             <Select
                 v-model="form.purok_id" 
-                :options="puroks"
+                :collection="puroks"
                 :form="form"
                 @callMethod="loadPurok"
             />
@@ -77,12 +78,14 @@ export default {
             barangays:[],
             puroks:[],
             testValue:"",
-            pageTitle: ""
+            pageTitle: "",
+            loading:false,
         };
     },
     mounted() {
 
         if (this.editData !== undefined) {
+            this.loading = true
             this.pageTitle = "Edit"
             this.form.name = this.editData.name
             this.form.email = this.editData.email

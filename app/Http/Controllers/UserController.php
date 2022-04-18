@@ -60,7 +60,6 @@ class UserController extends Controller
 
     public function edit(Request $request, $id)
     {
-
         $data = $this->model->where('id', $id)->first([
             'name', 'id', 'email', 'municipal_id', 'barangay_id'
         ]);
