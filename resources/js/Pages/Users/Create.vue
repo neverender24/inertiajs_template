@@ -15,18 +15,33 @@
             <label for="">Names</label>
             <input type="text" v-model="form.name" class="form-control" autocomplete="chrome-off">
             <div class="fs-6 c-red-500" v-if="form.errors.name">{{ form.errors.name }}</div>
+
             <label for="">Municipality</label>
             <Select
                 v-model="form.municipal_id" 
-                :collection="municipals"
+                :options="municipals"
+                :form="form"
             />
-            <div class="fs-6 c-red-500" v-if="form.errors.municipality">{{ form.errors.municipality }}</div>
+            <div class="fs-6 c-red-500" v-if="form.errors.municipal_id">{{ form.errors.municipal_id }}</div>
+
             <label for="">Barangay</label>
             <Select
                 v-model="form.barangay_id" 
-                :collection="barangays"
+                :options="barangays"
+                :form="form"
+                @callMethod="loadBarangays"
             />
-            <div class="fs-6 c-red-500" v-if="form.errors.municipality">{{ form.errors.municipality }}</div>
+            <div class="fs-6 c-red-500" v-if="form.errors.barangay_id">{{ form.errors.barangay_id }}</div>
+
+            <label for="">Purok</label>
+            <Select
+                v-model="form.purok_id" 
+                :options="puroks"
+                :form="form"
+                @callMethod="loadPurok"
+            />
+            <div class="fs-6 c-red-500" v-if="form.errors.purok_id">{{ form.errors.purok_id }}</div>
+
             <label for="">Email</label>
             <input type="text" v-model="form.email" class="form-control" autocomplete="chrome-off">
             <label for="">Password</label>
@@ -53,12 +68,15 @@ export default {
                 name: "",
                 municipal_id:"",
                 barangay_id:"",
+                purok_id:"",
                 email: "",
                 password: "",
                 id: null
             }),
             municipals:[],
             barangays:[],
+            puroks:[],
+            testValue:"",
             pageTitle: ""
         };
     },
@@ -76,11 +94,6 @@ export default {
         }
 
         this.loadMunicipals()
-    },
-    watch:{
-        'form.municipal_id': function(value) {
-            this.loadBarangays(value)
-        }
     },
 
     methods: {
@@ -100,10 +113,18 @@ export default {
             })
         },
 
-        loadBarangays(municipal_id) {
-            axios.post('/barangays',{municipal_id:municipal_id}).then((response) => {
+        loadBarangays() {
+            axios.post('/barangays', {municipal_id:this.form.municipal_id}).then((response) => {
                 this.barangays = response.data
             })
+        },
+
+        loadPurok() {
+            this.puroks = [
+                {value:"1", name:"test1"},
+                {value:"2", name:"test2"},
+                {value:"3", name:"test3"},
+            ]
         }
 
     },

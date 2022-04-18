@@ -36,7 +36,8 @@
                         <tr v-for="(user, index) in users.data" :key="index">
                             <td>{{ user.name }}</td>
                             <td style="text-align: right">
-                                <div class="dropdown dropstart" v-if="user.can.edit">
+                                <!-- v-if="user.can.edit" -->
+                                <div class="dropdown dropstart" >
                                   <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
                                       <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
