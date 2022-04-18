@@ -32,11 +32,13 @@ __webpack_require__.r(__webpack_exports__);
       barangays: [],
       puroks: [],
       testValue: "",
-      pageTitle: ""
+      pageTitle: "",
+      loading: false
     };
   },
   mounted: function mounted() {
     if (this.editData !== undefined) {
+      this.loading = true;
       this.pageTitle = "Edit";
       this.form.name = this.editData.name;
       this.form.email = this.editData.email;
@@ -223,35 +225,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.form.municipal_id = $event;
     }),
-    options: $data.municipals,
+    collection: $data.municipals,
+    label: "name",
     form: $data.form
   }, null, 8
   /* PROPS */
-  , ["modelValue", "options", "form"]), $data.form.errors.municipal_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.municipal_id), 1
+  , ["modelValue", "collection", "form"]), $data.form.errors.municipal_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.municipal_id), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
     modelValue: $data.form.barangay_id,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.form.barangay_id = $event;
     }),
-    options: $data.barangays,
+    collection: $data.barangays,
     form: $data.form,
     onCallMethod: $options.loadBarangays
   }, null, 8
   /* PROPS */
-  , ["modelValue", "options", "form", "onCallMethod"]), $data.form.errors.barangay_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.barangay_id), 1
+  , ["modelValue", "collection", "form", "onCallMethod"]), $data.form.errors.barangay_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.barangay_id), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
     modelValue: $data.form.purok_id,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.form.purok_id = $event;
     }),
-    options: $data.puroks,
+    collection: $data.puroks,
     form: $data.form,
     onCallMethod: $options.loadPurok
   }, null, 8
   /* PROPS */
-  , ["modelValue", "options", "form", "onCallMethod"]), $data.form.errors.purok_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.purok_id), 1
+  , ["modelValue", "collection", "form", "onCallMethod"]), $data.form.errors.purok_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.purok_id), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",

@@ -1,8 +1,7 @@
 <template>
     <v-select 
+        :options="collection"
         :reduce="collection => collection.value"
-        :clearable="false" 
-        
         label="name"></v-select>
 </template>
 
@@ -10,7 +9,11 @@
 
 export default {
     props: {
+<<<<<<< HEAD
         
+=======
+        collection:Object,
+>>>>>>> 0b7e1ccf6618e099838130fed027e0f6f5af5989
         form:Object,
         /**
          * List of dynamic props to watch that will trigger

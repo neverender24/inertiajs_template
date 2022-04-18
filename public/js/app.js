@@ -94,40 +94,9 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Shared/Select.vue?vue&type=script&lang=js ***!
   \********************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    form: Object
-    /**
-     * List of dynamic props to watch that will trigger
-     * the api call (axios response)
-     */
-    // barangas:{
-    //     type: String,
-    //     default: ''
-    // },
-    // purok:{
-    //     type: String,
-    //     default: ''
-    // },
-
-  },
-  watch: {
-    form: {
-      handler: function handler(value) {
-        this.$emit('callMethod');
-        console.log(value.barangay_id);
-      },
-      deep: true
-    }
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\inertia\\resources\\js\\Shared\\Select.vue: Unexpected token (5:0)\n\n\u001b[0m \u001b[90m 3 |\u001b[39m \u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 4 |\u001b[39m     props\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m \u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<<\u001b[39m\u001b[33m<\u001b[39m \u001b[33mHEAD\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   |\u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 7 |\u001b[39m \u001b[33m===\u001b[39m\u001b[33m===\u001b[39m\u001b[33m=\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 8 |\u001b[39m         collection\u001b[33m:\u001b[39m\u001b[33mObject\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at instantiate (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:72:32)\n    at constructor (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:358:12)\n    at Parser.raise (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:3334:19)\n    at Parser.unexpected (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:3372:16)\n    at Parser.parsePropertyName (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:13743:24)\n    at Parser.parsePropertyDefinition (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:13574:22)\n    at Parser.parseObjectLike (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:13494:21)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:12889:23)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:12539:23)\n    at Parser.parseUpdate (C:\\xampp\\htdocs\\inertia\\node_modules\\@babel\\parser\\lib\\index.js:12518:21)");
 
 /***/ }),
 
@@ -500,18 +469,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+function render(_ctx, _cache) {
   var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_select, {
+    options: _ctx.collection,
     reduce: function reduce(collection) {
       return collection.value;
     },
-    clearable: false,
     label: "name"
   }, null, 8
   /* PROPS */
-  , ["reduce"]);
+  , ["options", "reduce"]);
 }
 
 /***/ }),
