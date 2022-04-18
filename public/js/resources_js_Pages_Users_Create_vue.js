@@ -73,6 +73,7 @@ __webpack_require__.r(__webpack_exports__);
         municipal_id: this.form.municipal_id
       }).then(function (response) {
         _this2.barangays = response.data;
+        _this2.puroks = [];
       });
     },
     loadPurok: function loadPurok() {
@@ -192,7 +193,7 @@ var _hoisted_15 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
-  var _component_Select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Select");
+  var _component_v_select = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-select");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.pageTitle) + " users", 1
   /* TEXT */
@@ -220,41 +221,52 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.name]]), $data.form.errors.name ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.name), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Select\r\n                v-model=\"form.municipal_id\" \r\n                :collection=\"municipals\"\r\n                label=\"name\"\r\n                :form=\"form\"\r\n            /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $data.form.municipal_id,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.form.municipal_id = $event;
     }),
-    collection: $data.municipals,
+    options: $data.municipals,
+    reduce: function reduce(municipals) {
+      return municipals.value;
+    },
     label: "name",
-    form: $data.form
+    resetOnOptionsChange: true,
+    "onOption:selected": $options.loadBarangays
   }, null, 8
   /* PROPS */
-  , ["modelValue", "collection", "form"]), $data.form.errors.municipal_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.municipal_id), 1
+  , ["modelValue", "options", "reduce", "onOption:selected"]), $data.form.errors.municipal_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.municipal_id), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Select\r\n                v-model=\"form.barangay_id\" \r\n                :collection=\"barangays\"\r\n                :form=\"form\"\r\n                @callMethod=\"loadBarangays\"\r\n                :propName=\"'barangay_id'\"\r\n            /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $data.form.barangay_id,
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.form.barangay_id = $event;
     }),
-    collection: $data.barangays,
-    form: $data.form,
-    onCallMethod: $options.loadBarangays
+    options: $data.barangays,
+    reduce: function reduce(barangays) {
+      return barangays.value;
+    },
+    label: "name",
+    resetOnOptionsChange: true,
+    "onOption:selected": $options.loadPurok
   }, null, 8
   /* PROPS */
-  , ["modelValue", "collection", "form", "onCallMethod"]), $data.form.errors.barangay_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.barangay_id), 1
+  , ["modelValue", "options", "reduce", "onOption:selected"]), $data.form.errors.barangay_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.barangay_id), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select, {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_select, {
     modelValue: $data.form.purok_id,
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.form.purok_id = $event;
     }),
-    collection: $data.puroks,
-    form: $data.form,
-    onCallMethod: $options.loadPurok
+    options: $data.puroks,
+    label: "name",
+    reduce: function reduce(puroks) {
+      return puroks.value;
+    },
+    resetOnOptionsChange: true
   }, null, 8
   /* PROPS */
-  , ["modelValue", "collection", "form", "onCallMethod"]), $data.form.errors.purok_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.purok_id), 1
+  , ["modelValue", "options", "reduce"]), $data.form.errors.purok_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.purok_id), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
