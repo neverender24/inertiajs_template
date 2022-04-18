@@ -14,53 +14,41 @@
         <form @submit.prevent="submit()">
             <label for="">Names</label>
             <input type="text" v-model="form.name" class="form-control" autocomplete="chrome-off">
+
             <div class="fs-6 c-red-500" v-if="form.errors.name">{{ form.errors.name }}</div>
 
-            <label for="">Municipality</label>
-            <!-- <Select
-                v-model="form.municipal_id" 
-                :collection="municipals"
-                label="name"
-                :form="form"
-            /> -->
-            <v-select 
-            v-model="form.municipal_id" 
-            :options="municipals"
-            :reduce="municipals => municipals.value"
-            label="name"
-            :resetOnOptionsChange="true"
-            @option:selected="loadBarangays"
-            >
-            </v-select>
+                <label for="">Municipality</label>
+            
+                <v-select 
+                    v-model="form.municipal_id" 
+                    :options="municipals"
+                    :reduce="municipals => municipals.value"
+                    label="name"
+                    :value="form.municipal_id"
+                    @option:selected="loadBarangays"
+                ></v-select>
             <div class="fs-6 c-red-500" v-if="form.errors.municipal_id">{{ form.errors.municipal_id }}</div>
 
-            <label for="">Barangay</label>
-            <!-- <Select
-                v-model="form.barangay_id" 
-                :collection="barangays"
-                :form="form"
-                @callMethod="loadBarangays"
-                :propName="'barangay_id'"
-            /> -->
-            <v-select 
-            v-model="form.barangay_id" 
-            :options="barangays"
-            :reduce="barangays => barangays.value"
-            label="name"
-            :resetOnOptionsChange="true"
-            @option:selected="loadPurok"
-            >
-            </v-select>
+                <label for="">Barangay</label>
+           
+                <v-select 
+                    v-model="form.barangay_id" 
+                    :options="barangays"
+                    :reduce="barangays => barangays.value"
+                    label="name"
+                    :resetOnOptionsChange="form.barangay_id != '' ? false : true"
+                    @option:selected="loadPurok"
+                ></v-select>
             <div class="fs-6 c-red-500" v-if="form.errors.barangay_id">{{ form.errors.barangay_id }}</div>
 
-            <label for="">Purok</label>
-            <v-select 
-                v-model="form.purok_id" 
-                :options="puroks"
-                label="name"
-                :reduce="puroks => puroks.value"
-                :resetOnOptionsChange="true"
-            ></v-select>
+                <label for="">Purok</label>
+                <v-select 
+                    v-model="form.purok_id" 
+                    :options="puroks"
+                    label="name"
+                    :reduce="puroks => puroks.value"
+                    :resetOnOptionsChange="true"
+                ></v-select>
             
             <div class="fs-6 c-red-500" v-if="form.errors.purok_id">{{ form.errors.purok_id }}</div>
 
@@ -113,6 +101,7 @@ export default {
             this.form.id = this.editData.id
             this.form.municipal_id = this.editData.municipal_id
             this.form.barangay_id = this.editData.barangay_id
+            this.loadBarangays()
         } else {
             this.pageTitle = "Create"
         }
@@ -138,7 +127,7 @@ export default {
         },
 
         loadBarangays() {
-            
+            this.form.barangay_id = !!this.editData ? this.form.barangay_id : ''; 
             axios.post('/barangays', {municipal_id:this.form.municipal_id}).then((response) => {
                 this.barangays = response.data
                 this.puroks = []

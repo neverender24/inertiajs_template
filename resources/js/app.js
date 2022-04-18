@@ -7,7 +7,6 @@ import Notification  from "./Shared/Notification"
 import { InertiaProgress } from '@inertiajs/progress'
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
-import Select from './Shared/Select';
 
 //PLEASE COMMENT THE PLUGINS THAT YOU WON'T BE USING
 
@@ -45,7 +44,6 @@ createInertiaApp({
       .component("Notification", Notification)
       .component("FilePond", FilePond)
       .component("v-select", vSelect)
-      .component("Select", Select)
       .mount(el)
   },
 
