@@ -17,52 +17,19 @@
             <div class="fs-6 c-red-500" v-if="form.errors.name">{{ form.errors.name }}</div>
 
             <label for="">Municipality</label>
-            <!-- <Select
-                v-model="form.municipal_id" 
-                :collection="municipals"
-                label="name"
-                :form="form"
-            /> -->
-            <v-select 
-            v-model="form.municipal_id" 
-            :options="municipals"
-            :reduce="municipals => municipals.value"
-            label="name"
-            :resetOnOptionsChange="true"
-            @option:selected="loadBarangays"
-            >
-            </v-select>
-            <div class="fs-6 c-red-500" v-if="form.errors.municipal_id">{{ form.errors.municipal_id }}</div>
+             <Select2 v-model="form.citymunCode" :options="municipals" id="municipals" @select="loadBarangays" />
+            <div class="fs-6 c-red-500" v-if="form.errors.citymunCode">{{ form.errors.citymunCode }}</div>
 
             <label for="">Barangay</label>
-            <!-- <Select
-                v-model="form.barangay_id" 
-                :collection="barangays"
-                :form="form"
-                @callMethod="loadBarangays"
-                :propName="'barangay_id'"
-            /> -->
-            <v-select 
-            v-model="form.barangay_id" 
-            :options="barangays"
-            :reduce="barangays => barangays.value"
-            label="name"
-            :resetOnOptionsChange="true"
-            @option:selected="loadPurok"
-            >
-            </v-select>
-            <div class="fs-6 c-red-500" v-if="form.errors.barangay_id">{{ form.errors.barangay_id }}</div>
+            <Select2 v-model="form.brgyCode" :options="barangays"/>
+            <div class="fs-6 c-red-500" v-if="form.errors.brgyCode">{{ form.errors.brgyCode }}</div>
 
-            <label for="">Purok</label>
-            <v-select 
-                v-model="form.purok_id" 
-                :options="puroks"
-                label="name"
-                :reduce="puroks => puroks.value"
-                :resetOnOptionsChange="true"
-            ></v-select>
-            
-            <div class="fs-6 c-red-500" v-if="form.errors.purok_id">{{ form.errors.purok_id }}</div>
+            <label for="">Permission</label>
+            <select class="form-select" v-model="form.permission">
+                <option value="Admin">Admin</option>
+                <option value="Basic">Basic</option>
+            </select>
+            <div class="fs-6 c-red-500" v-if="form.errors.brgyCode">{{ form.errors.brgyCode }}</div>
 
             <label for="">Email</label>
             <input type="text" v-model="form.email" class="form-control" autocomplete="chrome-off">
@@ -71,14 +38,14 @@
             <input type="hidden" v-model="form.id" class="form-control" autocomplete="chrome-off">
             <button type="button" class="btn btn-primary mt-3" @click="submit()" :disabled="form.processing">Save changes</button>
         </form>
+
+       
     </div>
 </div>
 
 </template>
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
-
-
 
 export default {
     props: {
@@ -87,9 +54,10 @@ export default {
     data() {
         return {
             form: useForm({
+                permission: "",
                 name: "",
-                municipal_id:"",
-                barangay_id:"",
+                citymunCode:"",
+                brgyCode:"",
                 purok_id:"",
                 email: "",
                 password: "",
@@ -111,18 +79,19 @@ export default {
             this.form.name = this.editData.name
             this.form.email = this.editData.email
             this.form.id = this.editData.id
-            this.form.municipal_id = this.editData.municipal_id
-            this.form.barangay_id = this.editData.barangay_id
+            this.form.citymunCode = this.editData.citymunCode
+            this.form.brgyCode = this.editData.brgyCode
         } else {
             this.pageTitle = "Create"
         }
 
         this.loadMunicipals()
+        this.loadBarangays()
     },
 
     methods: {
         submit() {
-            
+
             if (this.editData !== undefined) {
                 this.form.patch("/users/" + this.form.id, this.form);
             } else {
@@ -132,28 +101,18 @@ export default {
         },
 
         loadMunicipals() {
-            axios.post('/municipals').then((response) => {
+            axios.post('/municipalities').then((response) => {
                 this.municipals = response.data
+                
             })
         },
 
         loadBarangays() {
-            
-            axios.post('/barangays', {municipal_id:this.form.municipal_id}).then((response) => {
+            axios.post('/barangays', {citymunCode:this.form.citymunCode}).then((response) => {
                 this.barangays = response.data
                 this.puroks = []
             })
-
         },
-
-        loadPurok() {
-            this.puroks = [
-                {value:"1", name:"test1"},
-                {value:"2", name:"test2"},
-                {value:"3", name:"test3"},
-            ]
-        }
-
     },
 };
 </script>

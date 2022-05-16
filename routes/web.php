@@ -4,8 +4,9 @@ use App\Http\Controllers\FileHandleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\MunicipalController;
+use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\BarangayController;
+use App\Http\Controllers\PermissionController;
 
 Auth::routes();
 
@@ -38,13 +39,16 @@ Route::middleware('auth')->group(function() {
     
     
     //Municipalities
-    Route::prefix('municipals')->group(function() {
-        Route::post('/',[MunicipalController::class, 'index']);
+    Route::prefix('municipalities')->group(function() {
+        Route::post('/',[MunicipalityController::class, 'index']);
     });
 
     //Barangays
     Route::prefix('barangays')->group(function() {
         Route::post('/',[BarangayController::class, 'index']);
     });
+
+    Route::post('get-all-permissions', [PermissionController::class, 'getAllPermissions']);
+    Route::post('update-user-permissions', [PermissionController::class, 'updateUserPermissions']);
     
 });

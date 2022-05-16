@@ -15,10 +15,13 @@ class FirstUserSeed extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'id' => 1,
             'name' => 'Administrator',
             'email' => 'admin@admin.com',
             'password' => bcrypt('12345678'),
         ]);
 
+        
+        
     }
 }

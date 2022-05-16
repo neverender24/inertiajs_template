@@ -15,10 +15,12 @@ class CreateBarangaysTable extends Migration
     {
         Schema::create('barangays', function (Blueprint $table) {
             $table->id();
-            $table->integer('municipal_id');
-            $table->string('barangay');
+            $table->string('brgyCode');
+            $table->string('brgyDesc');
+            $table->string('regCode');
+            $table->string('provCode');
+            $table->string('citymunCode');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -81567,3 +81567,7 @@ table.dataTable.no-footer {
 .filepond--wrapper {
   width: 15rem !important;
 }
+
+.select2-container .select2-selection--single {
+  height: 33px !important;
+}

@@ -14,8 +14,8 @@ class AddBarangayAndMunicipalIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('barangay_id')->after('name')->nullable();
-            $table->integer('municipal_id')->after('barangay_id')->nullable();
+            $table->string('brgyCode')->after('name')->nullable();
+            $table->string('citymunCode')->after('brgyCode')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AddBarangayAndMunicipalIdToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('barangay_id');
-            $table->dropColumn('municipal_id');
+            $table->dropColumn('brgyCode');
+            $table->dropColumn('citymunCode');
         });
     }
 }

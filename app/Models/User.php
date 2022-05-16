@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Permission;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\HasMedia;
 
 
 class User extends Authenticatable implements HasMedia
@@ -19,8 +20,8 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'password',
-        'municipal_id',
-        'barangay_id'
+        'citymunCode',
+        'brgyCode'
     ];
 
     protected $hidden = [
@@ -31,6 +32,10 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function permissions() {
+        return $this->belongsToMany(Permission::class);
+    }
 
     // public function setPasswordAttribute($value)
     // {

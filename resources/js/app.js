@@ -3,11 +3,10 @@ require('./bootstrap');
 import { createApp, h } from 'vue'
 import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3'
 import Layout  from "./Shared/Layout"
+import Modal  from "./Shared/Modal"
 import Notification  from "./Shared/Notification"
 import { InertiaProgress } from '@inertiajs/progress'
-import vSelect from 'vue-select';
-import 'vue-select/dist/vue-select.css';
-import Select from './Shared/Select';
+import Select2 from 'vue3-select2-component';
 
 //PLEASE COMMENT THE PLUGINS THAT YOU WON'T BE USING
 
@@ -42,10 +41,10 @@ createInertiaApp({
       .use(plugin)
       .component("Link", Link)
       .component("Head", Head)
+      .component("Modal", Modal)
       .component("Notification", Notification)
       .component("FilePond", FilePond)
-      .component("v-select", vSelect)
-      .component("Select", Select)
+      .component('Select2', Select2)
       .mount(el)
   },
 
@@ -58,3 +57,8 @@ InertiaProgress.init({
     includeCSS: true,
     showSpinner: false,
 })
+
+// GLOBAL JS
+$(document).on('select2:open', () => {
+    document.querySelector('.select2-search__field').focus();
+});

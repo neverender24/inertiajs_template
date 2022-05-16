@@ -14,9 +14,9 @@ class UserPolicy
         return $user->email == "admin@admin.com";
     }
 
-    public function edit(User $user, User $other)
+    public function canDeleteUser(User $user)
     {
-        return (bool) mt_rand(0,1);
+        return $user->permissions()->where('id', 3)->exists();
     }
 
    
