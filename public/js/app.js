@@ -1219,12 +1219,54 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./Charts/LineChart": [
+		"./resources/js/Pages/Charts/LineChart.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_LineChart_vue"
+	],
+	"./Charts/LineChart.vue": [
+		"./resources/js/Pages/Charts/LineChart.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_LineChart_vue"
+	],
+	"./Charts/PieChart": [
+		"./resources/js/Pages/Charts/PieChart.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_PieChart_vue"
+	],
+	"./Charts/PieChart.vue": [
+		"./resources/js/Pages/Charts/PieChart.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_PieChart_vue"
+	],
+	"./Charts/SomeChart": [
+		"./resources/js/Pages/Charts/SomeChart.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_SomeChart_vue"
+	],
+	"./Charts/SomeChart.vue": [
+		"./resources/js/Pages/Charts/SomeChart.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_SomeChart_vue"
+	],
+	"./Charts/TotalUsers": [
+		"./resources/js/Pages/Charts/TotalUsers.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_TotalUsers_vue"
+	],
+	"./Charts/TotalUsers.vue": [
+		"./resources/js/Pages/Charts/TotalUsers.vue",
+		"/js/vendor",
+		"resources_js_Pages_Charts_TotalUsers_vue"
+	],
 	"./Home": [
 		"./resources/js/Pages/Home.vue",
+		"/js/vendor",
 		"resources_js_Pages_Home_vue"
 	],
 	"./Home.vue": [
 		"./resources/js/Pages/Home.vue",
+		"/js/vendor",
 		"resources_js_Pages_Home_vue"
 	],
 	"./Posts/Index": [
@@ -1278,7 +1320,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(() => {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(() => {
 		return __webpack_require__(id);
 	});
 }
