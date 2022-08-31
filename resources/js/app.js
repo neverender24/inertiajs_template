@@ -62,3 +62,11 @@ InertiaProgress.init({
 $(document).on('select2:open', () => {
     document.querySelector('.select2-search__field').focus();
 });
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+
+

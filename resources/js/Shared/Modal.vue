@@ -13,7 +13,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="closeModal">Close</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  @click="saveModal">Save changes</button>
+            <button type="button" class="btn btn-primary"  @click="saveModal">Save changes</button>
           </div>
         </div>
       </div>
@@ -21,13 +21,19 @@
 </template>
 
 <script>
+
 export default {
     props: {
         modalTitle: String,
     },
+    data() {
+      return {
+        myModal: null
+      }
+    },
     mounted() {
-        var myModal = new window.bootstrap.Modal(document.getElementById('modal'))
-        myModal.show()
+      this.myModal = new window.bootstrap.Modal(document.getElementById('modal'))
+      this.myModal.show()
     },
     methods: {
         closeModal() {
@@ -35,6 +41,7 @@ export default {
         },
         saveModal() {
             this.$emit('saveModal')
+
         }
     }
 }

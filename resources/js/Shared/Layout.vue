@@ -27,5 +27,12 @@ export default {
         Footer,
         Sidebar,
     },
+    mounted() {
+        // this will trigger all tooltips inside the layout only
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    },
 };
 </script>

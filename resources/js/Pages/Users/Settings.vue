@@ -129,6 +129,7 @@ export default {
                 replace: true,
                 onFinish: () => {
                     vm.isChangePhoto = !vm.isChangePhoto
+                    
                 }
             });
         },

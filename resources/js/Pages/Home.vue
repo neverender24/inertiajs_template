@@ -253,22 +253,33 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="layers bd bgc-white p-20" style="min-height: 400px;">
+                <!-- spinner before loading the chart -->
+                <div class="layers bd bgc-white p-20">
                     <div class="layer w-100 mB-10">
                         <h6 class="lh-1">Site Data</h6>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
+                    <div class="layers" style="min-height: 400px;">
+                        <div class="d-flex justify-content-center spinner-center">
+                            <div class="spinner-border" role="status"></div>
                         </div>
+                        <!-- <pie-chart></pie-chart> -->
                     </div>
-
-                    <!-- <pie-chart></pie-chart> -->
                 </div>
             </div>
         </div>
     </div>
 </template>
+<style scoped>
+    .spinner-center {
+        position: relative;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+</style>
+
 <script>
 import TotalUser from "../Pages/Charts/TotalUsers"
 import SomeChart from "../Pages/Charts/SomeChart"

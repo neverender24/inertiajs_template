@@ -34,10 +34,10 @@
                 </select>
                 <div class="fs-6 c-red-500" v-if="form.errors.brgyCode">{{ form.errors.brgyCode }}</div>
 
-                <label for="">Email</label>
-                <input type="text" v-model="form.email" class="form-control" autocomplete="chrome-off">
-                <label for="">Password</label>
-                <input type="password" v-model="form.password" class="form-control" autocomplete="chrome-off">
+                <text-input v-model="form.email" :error="form.errors.email" label="Email" type="email" isFocused="focus"/>
+                <text-input v-model="form.password" label="Password" type="password"/>
+
+
                 <input type="hidden" v-model="form.id" class="form-control" autocomplete="chrome-off">
                 <button type="button" class="btn btn-primary mt-3" @click="submit()" :disabled="form.processing">Save
                     changes</button>
@@ -50,8 +50,12 @@
 </template>
 <script>
 import { useForm } from "@inertiajs/inertia-vue3";
+import TextInput from '@/Shared/TextInput'
 
 export default {
+    components: {
+        TextInput,
+    },
     props: {
         editData: Object,
     },
